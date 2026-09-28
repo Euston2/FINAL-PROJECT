@@ -1,0 +1,3 @@
+C:/Users/eusto/OneDrive/Desktop/FINAL YEAR PROJECT/build/CMakeFiles/edems_capture.dir
+C:/Users/eusto/OneDrive/Desktop/FINAL YEAR PROJECT/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/eusto/OneDrive/Desktop/FINAL YEAR PROJECT/build/CMakeFiles/ZERO_CHECK.dir
