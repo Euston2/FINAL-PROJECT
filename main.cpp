@@ -1,4 +1,5 @@
 
+
 #include <atomic>
 #include <chrono>
 #include <csignal>
@@ -27,9 +28,8 @@ std::atomic<bool> g_running{true};
 void onSigInt(int ) {
     g_running = false;
 }
-.
-constexpr int kFlushEveryNPackets = 50;
 
+constexpr int kFlushEveryNPackets = 50;
 
 struct AppState {
     std::atomic<std::uint64_t> packets{0};
@@ -42,7 +42,6 @@ struct AppState {
     std::chrono::steady_clock::time_point fileOpenedAt;
     int packetsSinceFlush = 0;
 };
-
 
 std::filesystem::path makeRotatedFilename(const std::filesystem::path& outputDir) {
     const std::time_t now = std::time(nullptr);
@@ -57,10 +56,9 @@ std::filesystem::path makeRotatedFilename(const std::filesystem::path& outputDir
     return outputDir / oss.str();
 }
 
-.
 bool rotateFile(AppState& state) {
     if (state.writer != nullptr) {
-        state.writer->close();  
+        state.writer->close();
         delete state.writer;
         state.writer = nullptr;
     }
@@ -102,25 +100,20 @@ void onPacketArrives(pcpp::RawPacket* packet, pcpp::PcapLiveDevice* /*dev*/, voi
     auto* state = static_cast<AppState*>(cookie);
     state->packets.fetch_add(1, std::memory_order_relaxed);
 
-    
     const auto elapsed = std::chrono::steady_clock::now() - state->fileOpenedAt;
     if (elapsed >= std::chrono::seconds(state->rotationSeconds)) {
         rotateFile(*state);
     }
 
-    
     if (state->writer != nullptr) {
         state->writer->writePacket(*packet);
         state->packetsSinceFlush++;
-
-        
         if (state->packetsSinceFlush >= kFlushEveryNPackets) {
             state->writer->flush();
             state->packetsSinceFlush = 0;
         }
     }
 
-    
     pcpp::Packet parsedPacket(packet);
 
     auto* ipLayer = parsedPacket.getLayerOfType<pcpp::IPv4Layer>();
@@ -170,12 +163,14 @@ void listInterfaces() {
     }
 }
 
-}  
+}  // namespace
 
 int main(int argc, char* argv[]) {
     if (argc < 2 || std::string(argv[1]) == "--list") {
-        std::cout << "Usage: " << argv[0] << " <interface name> [rotation seconds, default 60]\n"
+        std::cout << "Usage: " << argv[0]
+                  << " <interface name> [rotation seconds, default 60] [BPF filter]\n"
                   << "       " << argv[0] << " --list\n"
+                  << "Example: " << argv[0] << " '\\Device\\NPF_{...}' 60 \"tcp port 443\"\n"
                   << "Available interfaces:\n";
         listInterfaces();
         return argc < 2 ? 1 : 0;
@@ -183,6 +178,7 @@ int main(int argc, char* argv[]) {
 
     const std::string ifaceName = argv[1];
     const int rotationSeconds = (argc >= 3) ? std::stoi(argv[2]) : 60;
+    const std::string bpfFilter = (argc >= 4) ? argv[3] : "";
 
     pcpp::PcapLiveDevice* dev =
         pcpp::PcapLiveDeviceList::getInstance().getPcapLiveDeviceByName(ifaceName);
@@ -198,6 +194,16 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+   
+    if (!bpfFilter.empty()) {
+        if (!dev->setFilter(bpfFilter)) {
+            std::cerr << "Invalid or unsupported BPF filter: \"" << bpfFilter << "\"" << std::endl;
+            dev->close();
+            return 1;
+        }
+        std::cout << "Filter applied: \"" << bpfFilter << "\"" << std::endl;
+    }
+
     std::signal(SIGINT, onSigInt);
 
     AppState state;
@@ -206,7 +212,6 @@ int main(int argc, char* argv[]) {
     state.outputDir = "captures";
     std::filesystem::create_directories(state.outputDir);
 
-    
     if (!rotateFile(state)) {
         dev->close();
         return 1;
@@ -230,16 +235,21 @@ int main(int argc, char* argv[]) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
         const std::uint64_t perSecond = state.packets.exchange(0);
         total += perSecond;
+
+        
+        pcpp::PcapStats stats{};
+        dev->getStatistics(stats);
+
         std::cout << "---- [" << ++seconds << "s] " << perSecond << " pkts/s (total " << total
-                  << ") ----" << std::endl;
+                  << ") | driver: recv=" << stats.packetsRecv << " drop=" << stats.packetsDrop
+                  << " ifdrop=" << stats.packetsDropByInterface << " ----" << std::endl;
     }
 
     dev->stopCapture();
     dev->close();
 
-    
     if (state.writer != nullptr) {
-        state.writer->close();  // flushes and closes the final, possibly-partial file
+        state.writer->close();
         delete state.writer;
     }
 
