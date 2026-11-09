@@ -1,0 +1,23 @@
+# EDEMS ML Component - Python Dependencies
+# Install with:  pip install -r requirements.txt
+
+# Core data handling
+pandas>=2.2,<3
+numpy>=1.26,<3
+pyarrow>=17,<19          # Parquet file I/O engine
+
+# Machine learning
+scikit-learn>=1.5,<2
+
+# ONNX export and inference
+skl2onnx>=1.17,<2
+onnxruntime>=1.19,<2
+
+# Packet parsing (Stage 6)
+scapy>=2.6,<3
+
+# Visualization
+matplotlib>=3.9,<4
+
+# Progress bars for long loops
+tqdm>=4.66,<5
