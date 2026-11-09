@@ -1,0 +1,11 @@
+label,is_attack,total_samples,detected_anomalies,recall_pct,mean_anomaly_score
+DDOS attack-LOIC-UDP,True,1730,1701,98.32,-0.6228
+Infilteration,True,118483,1278,1.08,-0.3963
+Benign,False,350000,3220,0.92,-0.4251
+DDoS attacks-LOIC-HTTP,True,575364,752,0.13,-0.4367
+Bot,True,144535,59,0.04,-0.4327
+DDOS attack-HOIC,True,198861,0,0.0,-0.4352
+DoS attacks-Hulk,True,145199,0,0.0,-0.3593
+DoS attacks-SlowHTTPTest,True,55,0,0.0,-0.3753
+FTP-BruteForce,True,53,0,0.0,-0.3759
+SSH-Bruteforce,True,94048,0,0.0,-0.4128
