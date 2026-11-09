@@ -1,0 +1,55 @@
+{
+  "model_type": "IsolationForest",
+  "selected_features": [
+    "Protocol",
+    "Flow Duration",
+    "Total Fwd Packets",
+    "Total Backward Packets",
+    "Fwd Packets Length Total",
+    "Bwd Packets Length Total",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Std",
+    "Bwd Packet Length Max",
+    "Bwd Packet Length Min",
+    "Bwd Packet Length Mean",
+    "Bwd Packet Length Std",
+    "Flow Bytes/s",
+    "Flow Packets/s",
+    "Flow IAT Mean",
+    "Flow IAT Std",
+    "Flow IAT Max",
+    "Flow IAT Min",
+    "SYN Flag Count",
+    "RST Flag Count",
+    "ACK Flag Count",
+    "Down/Up Ratio"
+  ],
+  "n_features": 24,
+  "train_days": [
+    "15-02-2018",
+    "22-02-2018"
+  ],
+  "val_days": [
+    "23-02-2018"
+  ],
+  "target_fpr": 0.01,
+  "empirical_val_fpr": 0.01,
+  "threshold": -0.5794468460972544,
+  "score_stats": {
+    "mean": -0.3922097915096727,
+    "std": 0.050684636764090865,
+    "min": -0.7806613234922823,
+    "max": -0.33683641947797266,
+    "1st_percentile": -0.5794468460972544,
+    "5th_percentile": -0.4790913269751068,
+    "10th_percentile": -0.4543241907285156
+  },
+  "iforest_params": {
+    "n_estimators": 100,
+    "max_samples": 1024,
+    "random_state": 42
+  },
+  "score_convention": "scikit-learn score_samples (lower is more anomalous; anomaly if score < threshold)"
+}

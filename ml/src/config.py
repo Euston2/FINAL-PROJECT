@@ -89,3 +89,69 @@ DAY_ATTACKS = {
 # for training (since we're training an unsupervised anomaly detector).
 LABEL_COL = "Label"
 BENIGN_LABEL = "Benign"
+
+# ---------------------------------------------------------------------------
+# 5. APPROVED REPRODUCIBLE FEATURES (Stage 2)
+# ---------------------------------------------------------------------------
+# 24 features computable identically from raw PCAPs using Scapy.
+# Order is strictly maintained across training, ONNX export, and inference.
+SELECTED_FEATURES = [
+    "Protocol",
+    "Flow Duration",
+    "Total Fwd Packets",
+    "Total Backward Packets",
+    "Fwd Packets Length Total",
+    "Bwd Packets Length Total",
+    "Fwd Packet Length Max",
+    "Fwd Packet Length Min",
+    "Fwd Packet Length Mean",
+    "Fwd Packet Length Std",
+    "Bwd Packet Length Max",
+    "Bwd Packet Length Min",
+    "Bwd Packet Length Mean",
+    "Bwd Packet Length Std",
+    "Flow Bytes/s",
+    "Flow Packets/s",
+    "Flow IAT Mean",
+    "Flow IAT Std",
+    "Flow IAT Max",
+    "Flow IAT Min",
+    "SYN Flag Count",
+    "RST Flag Count",
+    "ACK Flag Count",
+    "Down/Up Ratio",
+]
+
+# ---------------------------------------------------------------------------
+# 6. DAY-BASED SPLIT STRATEGY (Stage 3 & 4)
+# ---------------------------------------------------------------------------
+# We split BY DAY (not randomly across rows) to prevent temporal session
+# leakage. Normal network flows from one session share TCP sequence numbers,
+# connection durations, and IP behavior; random row splitting causes severe
+# evaluation overoptimism.
+#
+# - TRAIN_DAYS: Benign flows only, baseline behavior modeling.
+# - VAL_DAYS: Held-out Benign flows for empirical false-alarm calibration.
+# - TEST_DAYS: Complete days containing diverse real-world attacks.
+TRAIN_DAYS = ["15-02-2018", "22-02-2018"]
+VAL_DAYS   = ["23-02-2018"]
+TEST_DAYS  = [
+    "14-02-2018",  # FTP / SSH Brute Force
+    "16-02-2018",  # DoS (Hulk, SlowHTTPTest)
+    "20-02-2018",  # DDoS (LOIC-HTTP)
+    "21-02-2018",  # DDoS (LOIC-UDP, HOIC)
+    "28-02-2018",  # Infiltration 1 (Insider threat proxy)
+    "01-03-2018",  # Infiltration 2 (Insider threat proxy)
+    "02-03-2018",  # Botnet Ares (C2 / Exfiltration proxy)
+]
+
+# Target False Alarm Rate for threshold selection (1% = 0.01)
+TARGET_FPR = 0.01
+
+# IsolationForest hyperparameters
+IFOREST_PARAMS = {
+    "n_estimators": 100,
+    "max_samples": 1024,
+    "random_state": RANDOM_SEED,
+    "n_jobs": -1,
+}
