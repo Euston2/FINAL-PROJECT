@@ -1,0 +1,16 @@
+{
+  "overall_finding": "HYBRID: Feature Deficient for Protocol/Stealth Attacks, Model Weakness for Dense Floods.",
+  "case_a_attacks": [
+    "Infilteration (AUC ~0.51, Recall ~1.4%)",
+    "DoS attacks-Hulk (AUC ~0.08, Recall ~0.3%)",
+    "DoS attacks-SlowHTTPTest (AUC ~0.01, Recall 0.0%)",
+    "SSH-Bruteforce (AUC ~0.77, but Recall at 1% FPR is only 0.15%)"
+  ],
+  "case_a_explanation": "Features are the bottleneck. Single-flow packet lengths and timing cannot distinguish RFC-compliant connections from normal traffic. These attacks require aggregate multi-flow windowed features (Stage D).",
+  "case_b_attacks": [
+    "DDOS attack-HOIC (RF AUC 0.85, RF Recall 83.7% vs IForest AUC 0.002, Recall 0%)",
+    "DDoS attacks-LOIC-HTTP (RF AUC 0.99, RF Recall 51.8% vs IForest Recall 0.1%)",
+    "FTP-BruteForce (RF AUC 0.96 vs IForest AUC 0.53)"
+  ],
+  "case_b_explanation": "IsolationForest is the bottleneck for dense flood traffic. HOIC and LOIC-HTTP form dense multi-flow clusters that IsolationForest treats as normal high-density regions, whereas supervised decision trees split them cleanly."
+}
