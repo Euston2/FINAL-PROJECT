@@ -1,0 +1,15 @@
+attack_class,sample_count,is_unreliable,roc_auc,recall_at_1pct_fpr,recall_at_5pct_fpr
+DDOS attack-LOIC-UDP,1730,False,0.995,98.44,100.0
+DoS attacks-Slowloris,9908,False,0.7763,24.55,25.35
+Brute Force -Web,568,False,0.7217,44.89,45.6
+Bot,144535,False,0.6962,0.04,0.07
+DDoS attacks-LOIC-HTTP,575364,False,0.6945,0.13,0.14
+DDOS attack-HOIC,198861,False,0.6393,0.0,0.0
+SSH-Bruteforce,94048,False,0.631,0.0,0.0
+SQL Injection,85,True,0.6115,1.18,3.53
+Brute Force -XSS,229,False,0.598,49.34,49.78
+DoS attacks-GoldenEye,41406,False,0.5777,2.2,2.38
+Infilteration,118483,False,0.4338,1.38,3.17
+FTP-BruteForce,53,True,0.4197,0.0,0.0
+DoS attacks-SlowHTTPTest,55,True,0.4152,0.0,0.0
+DoS attacks-Hulk,145199,False,0.2282,0.0,0.0

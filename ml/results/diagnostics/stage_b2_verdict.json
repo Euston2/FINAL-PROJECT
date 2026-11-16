@@ -1,0 +1,36 @@
+{
+  "inverted_iforest_classes": [
+    "DoS attacks-Hulk (AUC: 0.2180)",
+    "Infilteration (AUC: 0.4137)",
+    "DoS attacks-SlowHTTPTest (AUC: 0.4066)",
+    "FTP-BruteForce (AUC: 0.4073)"
+  ],
+  "classes_with_high_ceiling": [
+    "DDoS attacks-LOIC-HTTP",
+    "DDOS attack-HOIC",
+    "DoS attacks-Hulk",
+    "Bot",
+    "SSH-Bruteforce",
+    "DoS attacks-GoldenEye",
+    "DoS attacks-Slowloris",
+    "DDOS attack-LOIC-UDP",
+    "Brute Force -Web",
+    "Brute Force -XSS"
+  ],
+  "classes_with_low_ceiling": [
+    "Infilteration"
+  ],
+  "iforest_blind_spots": [
+    "DDoS attacks-LOIC-HTTP",
+    "DDOS attack-HOIC",
+    "DoS attacks-Hulk",
+    "Bot",
+    "SSH-Bruteforce",
+    "DoS attacks-GoldenEye"
+  ],
+  "summary": {
+    "feature_deficiency": "Feature deficiency confirmed on: Infilteration. Even with an optimistic within-class supervised ceiling, these classes cannot be separated cleanly at 1% FPR using single-flow features.",
+    "algorithm_failure": "IsolationForest algorithm failure confirmed on: DDoS attacks-LOIC-HTTP, DDOS attack-HOIC, DoS attacks-Hulk, Bot, SSH-Bruteforce, DoS attacks-GoldenEye. Features carry strong discriminative signal (Within-Class ceiling recall: DDoS attacks-LOIC-HTTP 99.9%, DDOS attack-HOIC 99.9%, DoS attacks-Hulk 99.8%, Bot 100.0%, SSH-Bruteforce 100.0%, DoS attacks-GoldenEye 100.0%), but IsolationForest achieves near-zero recall (<= 2.2%).",
+    "iforest_inversions": "Critical IForest Inversions (AUC < 0.50): DoS attacks-Hulk (AUC: 0.2180), Infilteration (AUC: 0.4137), DoS attacks-SlowHTTPTest (AUC: 0.4066), FTP-BruteForce (AUC: 0.4073). For these classes, Isolation Forest actively scores attack flows as MORE normal than legitimate traffic."
+  }
+}

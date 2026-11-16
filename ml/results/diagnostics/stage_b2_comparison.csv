@@ -1,0 +1,15 @@
+attack_class,total_count,is_unreliable_n,iforest_auc,iforest_rec_1pct,within_class_rf_auc,within_class_rf_rec_1pct,combined_rf_auc,combined_rf_rec_1pct,zero_day_rf_auc,zero_day_rf_rec_1pct,primary_diagnosis
+DDoS attacks-LOIC-HTTP,575364,False,0.6473,0.13,0.9997,99.88,0.9983,99.29,0.9134,46.96,"IForest Blind Spot (Ceiling OK, IForest Fails)"
+DDOS attack-HOIC,198861,False,0.5981,0.0,0.9997,99.89,0.9994,98.98,0.8632,0.06,"IForest Blind Spot (Ceiling OK, IForest Fails)"
+DoS attacks-Hulk,145199,False,0.218,0.0,0.9995,99.75,0.9988,98.46,0.8175,1.47,IForest Inversion (Score Inverted < 0.5)
+Bot,144535,False,0.6485,0.04,0.9999,99.96,0.9998,99.01,0.5904,0.0,"IForest Blind Spot (Ceiling OK, IForest Fails)"
+Infilteration,118483,False,0.4137,1.13,0.8469,10.73,0.8362,6.59,0.4103,0.55,True Feature Deficient (Even Ceiling Fails)
+SSH-Bruteforce,94048,False,0.59,0.0,1.0,99.97,0.9999,99.79,0.6656,0.0,"IForest Blind Spot (Ceiling OK, IForest Fails)"
+DoS attacks-GoldenEye,41406,False,0.5448,2.24,1.0,99.97,0.9992,99.84,In Train,In Train,"IForest Blind Spot (Ceiling OK, IForest Fails)"
+DoS attacks-Slowloris,9908,False,0.7594,25.37,1.0,100.0,0.9998,99.7,In Train,In Train,Mixed Performance
+DDOS attack-LOIC-UDP,1730,False,0.9942,98.15,1.0,100.0,1.0,100.0,0.8017,0.0,Supervised Zero-Day Gap (Unseen Transfer Fails)
+Brute Force -Web,568,False,0.6818,42.25,0.9898,80.28,0.9684,49.3,In Train,In Train,Mixed Performance
+Brute Force -XSS,229,False,0.5629,46.09,0.9978,95.65,0.9779,46.96,In Train,In Train,Mixed Performance
+SQL Injection,85,True,0.5852,0.0,0.9516,90.7,0.9697,44.19,In Train,In Train,Unreliable Sample (N < 100)
+DoS attacks-SlowHTTPTest,55,True,0.4066,0.0,0.9815,100.0,0.9503,25.0,0.7422,0.0,Unreliable Sample (N < 100)
+FTP-BruteForce,53,True,0.4073,0.0,0.9992,100.0,0.9423,18.52,0.7528,0.0,Unreliable Sample (N < 100)

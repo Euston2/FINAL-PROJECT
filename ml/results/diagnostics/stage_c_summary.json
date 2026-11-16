@@ -1,0 +1,102 @@
+{
+  "prevalence_1pct": {
+    "roc_auc": {
+      "mean": 0.602,
+      "std": 0.0053
+    },
+    "pr_auc": {
+      "mean": 0.0125,
+      "std": 0.0002
+    },
+    "baseline_pr_auc": {
+      "mean": 0.01,
+      "std": 0.0
+    },
+    "pr_auc_above_baseline": {
+      "mean": 0.0025,
+      "std": 0.0002
+    },
+    "precision": {
+      "mean": 0.0073,
+      "std": 0.0029
+    },
+    "recall": {
+      "mean": 0.0065,
+      "std": 0.0026
+    },
+    "f1": {
+      "mean": 0.0069,
+      "std": 0.0028
+    },
+    "fpr": {
+      "mean": 0.009,
+      "std": 0.0
+    },
+    "recall_at_1pct_fpr": {
+      "mean": 0.6931,
+      "std": 0.247
+    },
+    "recall_at_5pct_fpr": {
+      "mean": 0.8812,
+      "std": 0.195
+    }
+  },
+  "prevalence_5pct": {
+    "roc_auc": {
+      "mean": 0.6043,
+      "std": 0.0032
+    },
+    "pr_auc": {
+      "mean": 0.0613,
+      "std": 0.0004
+    },
+    "baseline_pr_auc": {
+      "mean": 0.05,
+      "std": 0.0
+    },
+    "pr_auc_above_baseline": {
+      "mean": 0.0113,
+      "std": 0.0005
+    },
+    "precision": {
+      "mean": 0.0325,
+      "std": 0.0039
+    },
+    "recall": {
+      "mean": 0.0058,
+      "std": 0.0007
+    },
+    "f1": {
+      "mean": 0.0098,
+      "std": 0.0012
+    },
+    "fpr": {
+      "mean": 0.009,
+      "std": 0.0
+    },
+    "recall_at_1pct_fpr": {
+      "mean": 0.6042,
+      "std": 0.078
+    },
+    "recall_at_5pct_fpr": {
+      "mean": 0.8208,
+      "std": 0.1143
+    }
+  },
+  "perclass_roc_auc": {
+    "DDOS attack-LOIC-UDP": 0.995,
+    "DoS attacks-Slowloris": 0.7763,
+    "Brute Force -Web": 0.7217,
+    "Bot": 0.6962,
+    "DDoS attacks-LOIC-HTTP": 0.6945,
+    "DDOS attack-HOIC": 0.6393,
+    "SSH-Bruteforce": 0.631,
+    "SQL Injection": 0.6115,
+    "Brute Force -XSS": 0.598,
+    "DoS attacks-GoldenEye": 0.5777,
+    "Infilteration": 0.4338,
+    "FTP-BruteForce": 0.4197,
+    "DoS attacks-SlowHTTPTest": 0.4152,
+    "DoS attacks-Hulk": 0.2282
+  }
+}
