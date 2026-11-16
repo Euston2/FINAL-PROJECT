@@ -1,0 +1,151 @@
+{
+  "execution_time_seconds": 25.26,
+  "windows_per_day": 480,
+  "n_train_benign_windows": 926,
+  "n_val_benign_windows": 478,
+  "n_test_benign_windows": 2083,
+  "n_test_attack_windows": 1755,
+  "calibrated_threshold": -0.6401490249615635,
+  "prevalence_metrics": {
+    "prevalence_1pct": {
+      "roc_auc": {
+        "mean": 0.9276,
+        "std": 0.0432
+      },
+      "pr_auc": {
+        "mean": 0.5663,
+        "std": 0.1273
+      },
+      "baseline_pr_auc": {
+        "mean": 0.01,
+        "std": 0.0
+      },
+      "pr_auc_above_baseline": {
+        "mean": 0.5563,
+        "std": 0.1273
+      },
+      "precision": {
+        "mean": 0.531,
+        "std": 0.049
+      },
+      "recall": {
+        "mean": 0.6048,
+        "std": 0.1251
+      },
+      "f1": {
+        "mean": 0.5639,
+        "std": 0.0816
+      },
+      "recall_at_1pct_fpr": {
+        "mean": 70.0,
+        "std": 11.8889
+      }
+    },
+    "prevalence_5pct": {
+      "roc_auc": {
+        "mean": 0.929,
+        "std": 0.0127
+      },
+      "pr_auc": {
+        "mean": 0.7538,
+        "std": 0.0319
+      },
+      "baseline_pr_auc": {
+        "mean": 0.0497,
+        "std": 0.0
+      },
+      "pr_auc_above_baseline": {
+        "mean": 0.7041,
+        "std": 0.0319
+      },
+      "precision": {
+        "mean": 0.8533,
+        "std": 0.0102
+      },
+      "recall": {
+        "mean": 0.5899,
+        "std": 0.0474
+      },
+      "f1": {
+        "mean": 0.6969,
+        "std": 0.0366
+      },
+      "recall_at_1pct_fpr": {
+        "mean": 69.4495,
+        "std": 4.1267
+      }
+    }
+  },
+  "per_class": [
+    {
+      "attack_class": "DDOS attack-LOIC-UDP",
+      "window_count": 3,
+      "flow_level_auc": 0.995,
+      "window_level_auc": 1.0,
+      "delta_auc": 0.005,
+      "flow_rec_at_1pct": 98.44,
+      "win_rec_at_1pct": 100.0,
+      "is_unreliable": true
+    },
+    {
+      "attack_class": "DDOS attack-HOIC",
+      "window_count": 477,
+      "flow_level_auc": 0.6393,
+      "window_level_auc": 0.9993,
+      "delta_auc": 0.36,
+      "flow_rec_at_1pct": 0.0,
+      "win_rec_at_1pct": 99.37,
+      "is_unreliable": false
+    },
+    {
+      "attack_class": "DoS attacks-Hulk",
+      "window_count": 480,
+      "flow_level_auc": 0.2282,
+      "window_level_auc": 0.9976,
+      "delta_auc": 0.7694,
+      "flow_rec_at_1pct": 0.0,
+      "win_rec_at_1pct": 99.38,
+      "is_unreliable": false
+    },
+    {
+      "attack_class": "SSH-Bruteforce",
+      "window_count": 75,
+      "flow_level_auc": 0.631,
+      "window_level_auc": 0.9892,
+      "delta_auc": 0.3582,
+      "flow_rec_at_1pct": 0.0,
+      "win_rec_at_1pct": 97.33,
+      "is_unreliable": false
+    },
+    {
+      "attack_class": "DDoS attacks-LOIC-HTTP",
+      "window_count": 290,
+      "flow_level_auc": 0.6945,
+      "window_level_auc": 0.9846,
+      "delta_auc": 0.2901,
+      "flow_rec_at_1pct": 0.13,
+      "win_rec_at_1pct": 33.45,
+      "is_unreliable": false
+    },
+    {
+      "attack_class": "Bot",
+      "window_count": 129,
+      "flow_level_auc": 0.6962,
+      "window_level_auc": 0.9506,
+      "delta_auc": 0.2544,
+      "flow_rec_at_1pct": 0.04,
+      "win_rec_at_1pct": 59.69,
+      "is_unreliable": false
+    },
+    {
+      "attack_class": "Infilteration",
+      "window_count": 301,
+      "flow_level_auc": 0.4338,
+      "window_level_auc": 0.6578,
+      "delta_auc": 0.224,
+      "flow_rec_at_1pct": 1.38,
+      "win_rec_at_1pct": 0.0,
+      "is_unreliable": false
+    }
+  ]
+}

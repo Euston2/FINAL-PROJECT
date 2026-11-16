@@ -1,0 +1,12 @@
+Paradigm,Model Architecture,Granularity,Features,Train Time,ROC-AUC,PR-AUC (5% Prev),Recall @ 1% FPR,F1 Score,Deployability
+Single-Flow (Baseline),Isolation Forest (Default),Individual Flow,24 Flow Features,~12.0s,0.6043,0.0613,0.6%,0.0098,FAILED (Blind to Volumetric Attacks)
+Single-Flow (Supervised Ceiling),Random Forest (Within-Class 50/50),Individual Flow,24 Flow Features,~45.0s,0.9850,N/A (Supervised),82.5%,0.8600,THEORETICAL CEILING (Leaks Session State)
+Single-Flow (Zero-Day Supervised),Random Forest (Leave-Classes-Out),Individual Flow,24 Flow Features,~30.0s,0.5820,N/A (Supervised),0.0%,0.0000,FAILED (0% Generalization to Unseen Attacks)
+60s Window (Stage D),Isolation Forest (Default: auto),60s Capture Window,22 Aggregate Features,0.294s,0.9290,0.7538,69.4%,0.6969,HIGHLY VIABLE (Direct PCAP Match)
+60s Window (Stage E),IForest (max_samples=all),60s Capture Window,22 Aggregate Features,0.300s,0.9389,0.6836,72.7%,0.7805,RECOMMENDED WINNER (Top Recall & F1)
+60s Window (Stage E),PCA Reconstruction (k=8),60s Capture Window,22 Aggregate Features,0.006s,0.9323,0.5337,57.1%,0.2724,FASTEST (Linear Subspace Baseline)
+60s Window (Stage E),IForest (max_features=0.8),60s Capture Window,22 Aggregate Features,0.275s,0.9300,0.7009,65.5%,0.7135,INFERIOR (Low Density Separation)
+60s Window (Stage E),IForest (max_samples=256),60s Capture Window,22 Aggregate Features,0.378s,0.9290,0.7538,69.5%,0.6969,HIGHLY VIABLE (Top Precision / PR-AUC)
+60s Window (Stage E),"IForest (auto, feat=1.0)",60s Capture Window,22 Aggregate Features,0.294s,0.9290,0.7538,69.5%,0.6969,HIGHLY VIABLE (Top Precision / PR-AUC)
+60s Window (Stage E),Autoencoder MLP (14-8-14),60s Capture Window,22 Aggregate Features,0.162s,0.8948,0.4258,18.5%,0.1628,VIABLE (Effective on Infiltration)
+60s Window (Stage E),Local Outlier Factor (k=20),60s Capture Window,22 Aggregate Features,0.161s,0.7814,0.1199,5.1%,0.1422,INFERIOR (Low Density Separation)

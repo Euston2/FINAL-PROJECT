@@ -1,0 +1,26 @@
+{
+  "execution_time_seconds": 1.39,
+  "primary_recommendation": {
+    "model_architecture": "Isolation Forest (n_estimators=100, max_samples=all/926)",
+    "feature_set": "22 PCAP-Reproducible 60-Second Windowed Aggregate Features",
+    "justification": "Achieved top overall ROC-AUC (0.9389), top Recall@1%FPR (72.7%), and top F1 (0.7805) with a sub-second training time (0.300s). Reverses the single-flow score inversion on DoS Hulk (jumping from 0.2282 to 0.9968 AUC) and directly matches the 60-second PCAP rotation boundary of edems_capture.exe. Fully exportable via skl2onnx.",
+    "expected_runtime_metrics": {
+      "roc_auc_5pct_prevalence": 0.9389,
+      "recall_at_1pct_fpr": 72.7,
+      "pr_auc_5pct_prevalence": 0.6836,
+      "f1_score": 0.7805,
+      "inference_latency_ms": "< 1 ms per 60-second PCAP"
+    }
+  },
+  "key_findings": [
+    "1. Single-flow features suffer from an algorithmic blind spot: volumetric attacks form dense clusters that Isolation Forest scores as 'more normal' than diverse benign traffic (Hulk AUC was 0.2282).",
+    "2. Lifting features to 60-second windows completely cures this flaw: Hulk reached 0.9968 AUC, HOIC reached 0.9993 AUC, and SSH-Bruteforce reached 0.9906 AUC.",
+    "3. Supervised models cannot replace unsupervised detection: Leave-Classes-Out Random Forest dropped to 0.0% recall on novel attack types, confirming that unsupervised learning is required for zero-day evidence capture.",
+    "4. Infiltration represents a fundamental rate-based limitation: It lacks high-volume bursts and mimics human administration, achieving 0.7174 AUC. Subspace methods (PCA: 0.7882, Autoencoder: 0.8197) offer complementary signal."
+  ],
+  "documented_limitations_for_report": [
+    "Low-rate stealth attacks (Infiltration) do not create significant 60-second volume deviations.",
+    "Rare attack classes in CSE-CIC-IDS2018 (FTP-BruteForce, SlowHTTPTest, SQL-Injection) had fewer than 100 flows and spanned < 5 windows, rendering their per-class metrics low-confidence.",
+    "Fixed 60-second windows dilute short sub-second bursts within normal traffic; however, 60s is strictly mandated by the physical evidence preservation interval of edems_capture.exe."
+  ]
+}

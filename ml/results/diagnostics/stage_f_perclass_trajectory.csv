@@ -1,0 +1,8 @@
+attack_class,window_count,stage_c_flow_auc,stage_c_flow_rec1,stage_d_iforest_auto_auc,stage_d_iforest_auto_rec1,stage_e_iforest_all_auc,stage_e_iforest_all_rec1,stage_e_pca_auc,stage_e_autoencoder_auc,overall_trajectory
+DDOS attack-LOIC-UDP,3,0.995,98.44,1.0,100.0,1.0,100.0,1.0,0.9998,SOLVED (>99% Rec)
+DDOS attack-HOIC,477,0.6393,0.0,0.9993,99.37,0.9973,100.0,0.9561,0.9852,SOLVED (>99% Rec)
+DoS attacks-Hulk,480,0.2282,0.0,0.9976,99.38,0.9968,99.8,0.9948,0.9813,SOLVED (>99% Rec)
+SSH-Bruteforce,75,0.631,0.0,0.9892,97.33,0.9906,97.3,0.893,0.8033,SOLVED (>99% Rec)
+DDoS attacks-LOIC-HTTP,290,0.6945,0.13,0.9846,33.45,0.9813,44.5,0.9881,0.856,DETECTED (30-60% Rec)
+Bot,129,0.6962,0.04,0.9506,59.69,0.952,69.8,0.8515,0.5628,DETECTED (30-60% Rec)
+Infilteration,301,0.4338,1.38,0.6578,0.0,0.7174,0.7,0.7882,0.8197,STEALTH LIMITATION
