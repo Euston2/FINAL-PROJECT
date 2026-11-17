@@ -1,0 +1,259 @@
+{
+  "execution_time_seconds": 10.13,
+  "model": "PCA Reconstruction Error (k=8, 95% variance)",
+  "preprocessing": "log1p on 19 heavy-tailed features + StandardScaler (fit on benign train)",
+  "harness": {
+    "benign_train": 50000,
+    "benign_calibration": 25000,
+    "benign_test": 25000,
+    "attack_eval_flows": 665266,
+    "n_attack_classes": 14,
+    "n_unreliable_classes": 3,
+    "pca_components": 8,
+    "pca_explained_variance": 0.9656
+  },
+  "thresholds": {
+    "tau_1pct_fpr": 0.429746,
+    "tau_5pct_fpr": 0.122832,
+    "achieved_fpr_1pct": 0.88,
+    "achieved_fpr_5pct": 4.904
+  },
+  "reliable_class_mean": {
+    "roc_auc": 0.8425,
+    "recall_at_1pct_fpr": 21.78
+  },
+  "prevalence": {
+    "pooled_1pct": {
+      "roc_auc": {
+        "mean": 0.7577,
+        "std": 0.0146
+      },
+      "pr_auc": {
+        "mean": 0.0281,
+        "std": 0.0035
+      },
+      "baseline_pr_auc": {
+        "mean": 0.01,
+        "std": 0.0
+      },
+      "pr_auc_above_baseline": {
+        "mean": 0.0181,
+        "std": 0.0035
+      },
+      "precision_at_1pct": {
+        "mean": 0.0099,
+        "std": 0.0055
+      },
+      "recall_at_1pct_op": {
+        "mean": 0.0087,
+        "std": 0.0049
+      },
+      "f1_at_1pct": {
+        "mean": 0.0092,
+        "std": 0.0052
+      },
+      "alerts_per_1000_at_1pct": {
+        "mean": 8.799,
+        "std": 0.0495
+      },
+      "precision_at_5pct": {
+        "mean": 0.044,
+        "std": 0.0045
+      },
+      "recall_at_5pct_op": {
+        "mean": 0.2229,
+        "std": 0.0237
+      },
+      "f1_at_5pct": {
+        "mean": 0.0734,
+        "std": 0.0075
+      },
+      "alerts_per_1000_at_5pct": {
+        "mean": 50.7821,
+        "std": 0.2371
+      },
+      "recall_at_1pct_fpr": {
+        "mean": 0.8696,
+        "std": 0.4937
+      },
+      "recall_at_5pct_fpr": {
+        "mean": 22.2925,
+        "std": 2.3663
+      }
+    },
+    "pooled_5pct": {
+      "roc_auc": {
+        "mean": 0.7576,
+        "std": 0.0054
+      },
+      "pr_auc": {
+        "mean": 0.1255,
+        "std": 0.0032
+      },
+      "baseline_pr_auc": {
+        "mean": 0.05,
+        "std": 0.0
+      },
+      "pr_auc_above_baseline": {
+        "mean": 0.0755,
+        "std": 0.0032
+      },
+      "precision_at_1pct": {
+        "mean": 0.0424,
+        "std": 0.0144
+      },
+      "recall_at_1pct_op": {
+        "mean": 0.0074,
+        "std": 0.0026
+      },
+      "f1_at_1pct": {
+        "mean": 0.0127,
+        "std": 0.0044
+      },
+      "alerts_per_1000_at_1pct": {
+        "mean": 8.7323,
+        "std": 0.1314
+      },
+      "precision_at_5pct": {
+        "mean": 0.2003,
+        "std": 0.0069
+      },
+      "recall_at_5pct_op": {
+        "mean": 0.2334,
+        "std": 0.0101
+      },
+      "f1_at_5pct": {
+        "mean": 0.2156,
+        "std": 0.0083
+      },
+      "alerts_per_1000_at_5pct": {
+        "mean": 58.2611,
+        "std": 0.5041
+      },
+      "recall_at_1pct_fpr": {
+        "mean": 0.7447,
+        "std": 0.2628
+      },
+      "recall_at_5pct_fpr": {
+        "mean": 23.3435,
+        "std": 1.008
+      }
+    },
+    "balanced_1pct": {
+      "roc_auc": {
+        "mean": 0.8434,
+        "std": 0.0115
+      },
+      "pr_auc": {
+        "mean": 0.1443,
+        "std": 0.0134
+      },
+      "baseline_pr_auc": {
+        "mean": 0.01,
+        "std": 0.0
+      },
+      "pr_auc_above_baseline": {
+        "mean": 0.1343,
+        "std": 0.0134
+      },
+      "precision_at_1pct": {
+        "mean": 0.19,
+        "std": 0.0165
+      },
+      "recall_at_1pct_op": {
+        "mean": 0.2043,
+        "std": 0.0216
+      },
+      "f1_at_1pct": {
+        "mean": 0.1969,
+        "std": 0.0189
+      },
+      "alerts_per_1000_at_1pct": {
+        "mean": 10.7591,
+        "std": 0.2162
+      },
+      "precision_at_5pct": {
+        "mean": 0.055,
+        "std": 0.0066
+      },
+      "recall_at_5pct_op": {
+        "mean": 0.2822,
+        "std": 0.0359
+      },
+      "f1_at_5pct": {
+        "mean": 0.092,
+        "std": 0.0112
+      },
+      "alerts_per_1000_at_5pct": {
+        "mean": 51.3761,
+        "std": 0.3595
+      },
+      "recall_at_1pct_fpr": {
+        "mean": 20.4348,
+        "std": 2.158
+      },
+      "recall_at_5pct_fpr": {
+        "mean": 28.2213,
+        "std": 3.5888
+      }
+    },
+    "balanced_5pct": {
+      "roc_auc": {
+        "mean": 0.8439,
+        "std": 0.0055
+      },
+      "pr_auc": {
+        "mean": 0.311,
+        "std": 0.0108
+      },
+      "baseline_pr_auc": {
+        "mean": 0.05,
+        "std": 0.0
+      },
+      "pr_auc_above_baseline": {
+        "mean": 0.261,
+        "std": 0.0108
+      },
+      "precision_at_1pct": {
+        "mean": 0.564,
+        "std": 0.0098
+      },
+      "recall_at_1pct_op": {
+        "mean": 0.2164,
+        "std": 0.0087
+      },
+      "f1_at_1pct": {
+        "mean": 0.3128,
+        "std": 0.0105
+      },
+      "alerts_per_1000_at_1pct": {
+        "mean": 19.1822,
+        "std": 0.4329
+      },
+      "precision_at_5pct": {
+        "mean": 0.2418,
+        "std": 0.0064
+      },
+      "recall_at_5pct_op": {
+        "mean": 0.2971,
+        "std": 0.0103
+      },
+      "f1_at_5pct": {
+        "mean": 0.2666,
+        "std": 0.008
+      },
+      "alerts_per_1000_at_5pct": {
+        "mean": 61.4455,
+        "std": 0.5152
+      },
+      "recall_at_1pct_fpr": {
+        "mean": 21.6413,
+        "std": 0.8656
+      },
+      "recall_at_5pct_fpr": {
+        "mean": 29.7112,
+        "std": 1.0302
+      }
+    }
+  }
+}
