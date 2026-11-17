@@ -1,5 +1,5 @@
 {
-  "execution_time_seconds": 1.39,
+  "execution_time_seconds": 4.38,
   "primary_recommendation": {
     "model_architecture": "Isolation Forest (n_estimators=100, max_samples=all/926)",
     "feature_set": "22 PCAP-Reproducible 60-Second Windowed Aggregate Features",
